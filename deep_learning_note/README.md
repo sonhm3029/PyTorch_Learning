@@ -86,4 +86,6 @@ Trong thực nghiệm, có một vài phương pháp như dưới đây:
 
 Ví dụ sử dụng `pytorch` và thực hiện from scratch bài toán với `Linear Regression` và `GD`, `SGD`:
 
-[Gradient from scratch không dùng pytorch](../example/gradient_sractch.py)
+[Gradient from scratch không dùng pytorch](../example/gradient_descent_sractch.py)
+[Gradient from scratch dùng pytorch autograd](../example/gradient_descent_autograd.py)
+[SGD sử dụng pytorch](../example/sgd_pytorch.py)
