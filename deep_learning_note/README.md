@@ -93,3 +93,35 @@ Ví dụ sử dụng `pytorch` và thực hiện from scratch bài toán với `
 [SGD sử dụng pytorch](../example/sgd_pytorch.py)
 
 [Sử dụng model Linear Regression của pytorch](../example/linear_regression_pytorch.py)
+
+
+## 2. Logistic Regression
+
+Mô hình kết hợp giữa `Linear Regression` và `PLA` khi đầu ra là xác suất. Thường được dùng nhiều trong các bài toán classification.
+
+![](../images/logistic_reg_1.png)
+
+Trong đó `theta` là logistic function. Một số activate function thường dùng:
+
+![](../images/logistic_reg_2.png)
+
+**Sigmoid function:**
+
+Hàm sigmoid là hàm thường được sử dụng làm activate function vì có lim 2 phía đến vô cùng bằng 0 và 1:
+
+![](../images/sigmoid_1.png)
+
+Ngoài ra thì đạo hàm của hàm sigmoid sẽ cho ra kết quả là một hàm mới là hàm với biến số là chính hàm sigmoid:
+
+![](../images/sigmoid_2.png)
+
+Hoặc hàm `tanh`:
+
+![](../images/tanh_1.png)
+
+![](../images/tanh_2.png)
+
+Hàm mất mát đối với thuật toán logistic regression:
+
+![](../images/logistic_reg_3.png)
+
