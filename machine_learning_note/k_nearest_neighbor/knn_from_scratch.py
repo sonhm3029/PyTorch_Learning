@@ -31,10 +31,13 @@ plt.plot(X2[:,2], X2[:, 3], "bs")
 plt.show()
 
 class KNN:
-    def __init__(self, X_train, Y_train, k=3):
+
+    def __init__(self, k = 3):
+        self.k = k
+
+    def fit(self, X_train, Y_train):
         self.X_train = X_train
         self.Y_train = Y_train
-        self.k = k
 
     def euclid_dist(self, x1, x2):
         return np.sqrt(np.sum((x1-x2)**2))
@@ -54,7 +57,8 @@ class KNN:
         return Counter(knn_labels).most_common(1)[0][0]
         
 
-clf = KNN(X_train, Y_train, 3)
+clf = KNN(3)
+clf.fit(X_train, Y_train)
 y_pred = clf.predict(X_test)
 
 table_comp = {
