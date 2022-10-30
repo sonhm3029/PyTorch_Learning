@@ -22,12 +22,15 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # hyper parameters
-input_size = 784 # 28x28
-hidden_size = 100
+input_size = 784 #28*28
+hidden_size_1 = 392
+hidden_size_2 = 196
+hidden_size_3 = 98
+hidden_size_4 = 49
 num_classes = 10
-num_epochs = 2
+num_epochs = 3
 batch_size = 100
-learning_rate = 0.001
+learning_rate = 1e-3
 
 # MNIST
 train_dataset = torchvision.datasets.MNIST(root="././data",
@@ -60,20 +63,26 @@ plt.show()
 
 
 class NeuralNet(nn.Module):
-    def __init__(self, input_size, hidden_size, num_classes):
+    def __init__(self, input_size, hidden_size_1, hidden_size_2, hidden_size_3, hidden_size_4, num_classes):
         super(NeuralNet, self).__init__()
-        self.l1 = nn.Linear(input_size, hidden_size)
+        self.l1 = nn.Linear(input_size, hidden_size_1)
+        self.l2 = nn.Linear(hidden_size_1, hidden_size_2)
+        self.l3 = nn.Linear(hidden_size_2, hidden_size_3)
+        self.l4 = nn.Linear(hidden_size_3, hidden_size_4)
         self.relu = nn.ReLU()
-        self.l2 = nn.Linear(hidden_size, num_classes)
+        self.l = nn.Linear(hidden_size_4, num_classes)
     
     def forward(self, x):
         out = self.l1(x)
-        out = self.relu(out)
         out = self.l2(out)
+        out = self.l3(out)
+        out = self.l4(out)
+        out = self.relu(out)
+        out = self.l(out)
         
         return out
     
-model = NeuralNet(input_size, hidden_size, num_classes)
+model = NeuralNet(input_size, hidden_size_1, hidden_size_2, hidden_size_3, hidden_size_4, num_classes)
 
 # loss and optimizer
 criterion = nn.CrossEntropyLoss()
