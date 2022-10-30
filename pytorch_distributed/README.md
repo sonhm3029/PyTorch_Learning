@@ -1,1 +1,0 @@
-# Pytorch distributed for federated learning note
